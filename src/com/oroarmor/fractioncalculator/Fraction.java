@@ -39,9 +39,9 @@ public class Fraction {
 	}
 
 	public void multiply(int num) {
-		Nuemerator.multiply(new BigInteger(num+""));
+		Nuemerator.multiply(new BigInteger(num + ""));
 	}
-	
+
 	public static Fraction divide(Fraction one, Fraction two) {
 
 		return multiply(one, inverse(two));
@@ -50,7 +50,6 @@ public class Fraction {
 	public static Fraction inverse(Fraction fraction) {
 		return new Fraction(fraction.Denomenator, fraction.Nuemerator);
 	}
-	
 
 	private void simplify() {
 		BigInteger gcf = Nuemerator.gcd(Denomenator);
@@ -76,13 +75,23 @@ public class Fraction {
 
 		return sum;
 	}
-	
-	public static Fraction subtract(Fraction one, Fraction two) {
-		return add(one,multiply(two,new Fraction("-1","1")));
+
+	public static Fraction power(Fraction base, Fraction exp) {
+		base.Denomenator = base.Denomenator.modPow(exp.Nuemerator, BigInteger.valueOf(2).pow(500500));
+		base.Nuemerator = base.Nuemerator.modPow(exp.Nuemerator, BigInteger.valueOf(2).pow(500500));
+
+		base.Denomenator.modPow(BigInteger.ONE.divide(exp.Denomenator), BigInteger.valueOf(2).pow(500500));
+		base.Nuemerator.modPow(BigInteger.ONE.divide(exp.Denomenator), BigInteger.valueOf(2).pow(500500));
+
+		return base;
 	}
-	
+
+	public static Fraction subtract(Fraction one, Fraction two) {
+		return add(one, multiply(two, new Fraction("-1", "1")));
+	}
+
 	public String toString() {
-		return Nuemerator.toString()+"_"+Denomenator.toString();
+		return Nuemerator.toString() + "_" + Denomenator.toString();
 	}
 
 }
