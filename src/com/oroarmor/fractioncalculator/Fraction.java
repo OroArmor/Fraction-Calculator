@@ -80,5 +80,9 @@ public class Fraction {
 	public static Fraction subtract(Fraction one, Fraction two) {
 		return add(one,multiply(two,new Fraction("-1","1")));
 	}
+	
+	public String toString() {
+		return Nuemerator.toString()+"_"+Denomenator.toString();
+	}
 
 }
