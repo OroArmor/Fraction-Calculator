@@ -3,7 +3,7 @@ package com.oroarmor.fractioncalculator;
 import java.math.BigInteger;
 
 public class Fraction {
-
+ 
 	BigInteger Nuemerator;
 	BigInteger Denomenator;
 
